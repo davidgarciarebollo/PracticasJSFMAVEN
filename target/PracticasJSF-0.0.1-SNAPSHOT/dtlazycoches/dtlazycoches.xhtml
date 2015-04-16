@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:dataTable var="coche" value="#{dtLazyCochesView.cocheLazyModel}"
+			paginator="true" rows="5"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" id="carTable" lazy="true">
+			<p:ajax event="rowSelect" listener="#{dtLazyCochesView.onRowSelect}"
+				update=":form:cocheDetail" oncomplete="PF('cocheDialog').show()" />
+
+			<p:column headerText="Id" sortBy="#{coche.cocheid}"
+				filterBy="#{coche.cocheid}">
+				<h:outputText value="#{coche.cocheid}" />
+				</p:column>
+				
+				<p:column headerText="Marca" sortBy="#{coche.marca}"
+				filterBy="#{coche.marca}">
+				<h:outputText value="#{coche.marca}" />
+			</p:column>
+			
+			
+			<p:column headerText="Modelo" sortBy="#{coche.modelo}"
+				filterBy="#{coche.modelo}">
+				<h:outputText value="#{coche.modelo}" />
+			</p:column>
+			<p:column headerText="F. fabricación" sortBy="#{coche.ffab}"
+				filterBy="#{coche.ffab}">
+				<h:outputText value="#{coche.ffab}" />
+			</p:column>
+			
+		</p:dataTable>
+
+		<p:dialog header="Coche Detalle" widgetVar="cocheDialog" modal="true"
+			showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="cocheDetail" style="text-align:center;">
+				<p:panelGrid columns="2" rendered="#{dtLazyCochesView.selectedCoche}"
+					columnClasses="label,value">
+					<f:facet name="header">
+						<p:graphicImage library="images/dtLazy" name="coche.jpg" />
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{dtLazyCochesView.selectedCoche.cocheid}" />
+
+					<h:outputText value="Marca:" />
+					<h:outputText value="#{dtLazyCochesView.selectedCoche.marca}" />
+					
+					<h:outputText value="Modelo" />
+					<h:outputText value="#{dtLazyCochesView.selectedCoche.modelo}" />
+
+					<h:outputText value="F.fabricación" />
+					<h:outputText value="#{dtLazyCochesView.selectedCoche.ffab}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+
+
+	</h:form>
+	<h:form id="form2">
+	<h:commandButton  value="Insertar" action="insertarCoche"/>
+	</h:form>
+</h:body>
+</html>

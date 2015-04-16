@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:dataTable var="atleta" value="#{dtLazyView.atletaLazyModel}"
+			paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{dtLazyView.selectedAtleta}" id="carTable" lazy="true">
+			<p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}"
+				update=":form:atletaDetail" oncomplete="PF('atletaDialog').show()" />
+
+			<p:column headerText="Id" sortBy="#{atleta.atlId}"
+				filterBy="#{atleta.atlId}">
+				<h:outputText value="#{atleta.atlId}" />
+			</p:column>
+			<p:column headerText="Name" sortBy="#{atleta.name}"
+				filterBy="#{atleta.name}">
+				<h:outputText value="#{atleta.name}" />
+			</p:column>
+			<p:column headerText="F. Nac" sortBy="#{atleta.fnac}"
+				filterBy="#{atleta.fnac}">
+				<h:outputText value="#{atleta.fnac}" />
+			</p:column>
+			<p:column headerText="Nacionalidad" sortBy="#{atleta.nacionalidad}"
+				filterBy="#{atleta.nacionalidad}">
+				<h:outputText value="#{atleta.nacionalidad}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:dialog header="Atleta Detail" widgetVar="atletaDialog" modal="true"
+			showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="atletaDetail" style="text-align:center;">
+				<p:panelGrid columns="2" rendered="#{dtLazyView.selectedAtleta}"
+					columnClasses="label,value">
+					<f:facet name="header">
+						<p:graphicImage library="images/dtLazy" name="atleta.jpg" />
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{dtLazyView.selectedAtleta.atlId}" />
+
+					<h:outputText value="Name" />
+					<h:outputText value="#{dtLazyView.selectedAtleta.name}" />
+
+					<h:outputText value="F.Nac" />
+					<h:outputText value="#{dtLazyView.selectedAtleta.fnac}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+
+					<h:outputText value="Nacionalidad:" />
+					<h:outputText value="#{dtLazyView.selectedAtleta.nacionalidad}" />
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+		<h2>Prueba</h2>
+		
+<p:dataTable var="atleta" value="#{dtLazyView.atletaLazyModel}">
+
+<p:column headerText="Id" sortBy="#{atleta.atlId}"
+				filterBy="#{atleta.atlId}">
+				<h:outputText value="#{atleta.atlId}" />
+			</p:column>
+			<p:column headerText="Name" sortBy="#{atleta.name}"
+				filterBy="#{atleta.name}">
+				<h:outputText value="#{atleta.name}" />
+			</p:column>
+			<p:column headerText="F. Nac" sortBy="#{atleta.fnac}"
+				filterBy="#{atleta.fnac}">
+				<h:outputText value="#{atleta.fnac}" />
+			</p:column>
+			<p:column headerText="Nacionalidad" sortBy="#{atleta.nacionalidad}"
+				filterBy="#{atleta.nacionalidad}">
+				<h:outputText value="#{atleta.nacionalidad}" />
+			</p:column>
+
+</p:dataTable>
+
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<h:outputLabel value="ID"/>
+		<h:inputText value="#{dataTableStudentsView.student.studId}"/>
+		<br/>
+		<h:outputLabel value="Nombre"/>
+		<h:inputText value="#{dataTableStudentsView.student.name}"/>
+		<br/>
+		<h:outputLabel value="Email"/>
+		<h:inputText value="#{dataTableStudentsView.student.email}"/>
+		<br/>
+		<h:outputLabel value="Dob"/>
+		<h:inputText value="#{dataTableStudentsView.student.dob}">
+			<f:convertDateTime pattern="dd-MM-yyyy" />
+		</h:inputText>
+		<br/>
+		<h:commandButton value="Introducir nuevo Estudiante" action="#{dataTableStudentsView.createStudent}"/>
+	</h:form>
+</h:body>
+</html>
