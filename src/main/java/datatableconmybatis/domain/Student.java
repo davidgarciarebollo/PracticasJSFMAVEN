@@ -1,7 +1,7 @@
 package datatableconmybatis.domain;
 
 import java.util.Date;
-//hola
+
 public class Student {
 	private Integer studId;
 	private String name;
