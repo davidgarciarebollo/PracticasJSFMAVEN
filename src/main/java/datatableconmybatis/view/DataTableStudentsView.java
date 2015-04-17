@@ -1,5 +1,6 @@
 package datatableconmybatis.view;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class DataTableStudentsView implements Serializable {
     private StudentService studentService;
 
     @PostConstruct
-    public void init() {
+    public void init() throws IOException {
         student = new Student();
         students = studentService.findAllStudents();
     }
@@ -45,7 +46,7 @@ public class DataTableStudentsView implements Serializable {
         this.student = student;
     }
 
-    public String createStudent() {
+    public String createStudent() throws IOException {
         studentService.createStudent(student);
         return "dataTableStudents";
     }

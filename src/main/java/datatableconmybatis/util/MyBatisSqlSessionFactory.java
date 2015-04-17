@@ -14,22 +14,20 @@ public class MyBatisSqlSessionFactory {
 
     }
 
-    public static SqlSessionFactory getSqlSessionFactory() {
+    public static SqlSessionFactory getSqlSessionFactory() throws IOException {
         if (sqlSessionFactory == null) {
             InputStream inputStream;
-            try {
+           
                 inputStream = Resources
                         .getResourceAsStream("mybatis-config.xml");
                 sqlSessionFactory = new SqlSessionFactoryBuilder()
                         .build(inputStream);
-            } catch (IOException e) {
-                throw new RuntimeException("error");
-            }
+            
         }
         return sqlSessionFactory;
     }
 
-    public static SqlSession openSession() {
+    public static SqlSession openSession() throws IOException {
         return getSqlSessionFactory().openSession();
     }
 }

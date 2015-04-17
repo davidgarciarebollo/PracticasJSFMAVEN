@@ -1,5 +1,6 @@
 package datatableconmybatis.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,7 @@ import datatableconmybatis.util.MyBatisSqlSessionFactory;
 @ViewScoped
 public class StudentService {
 
-    public List<Student> findAllStudents() {
+    public List<Student> findAllStudents() throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             StudentMapper studentMapper = sqlSession
@@ -26,7 +27,7 @@ public class StudentService {
         }
     }
 
-    public Student findStudentById(Integer studId) {
+    public Student findStudentById(Integer studId) throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             StudentMapper studentMapper = sqlSession
@@ -37,7 +38,7 @@ public class StudentService {
         }
     }
 
-    public void createStudent(Student student) {
+    public void createStudent(Student student) throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             StudentMapper studentMapper = sqlSession

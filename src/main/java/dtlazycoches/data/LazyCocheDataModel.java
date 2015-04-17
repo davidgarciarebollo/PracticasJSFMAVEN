@@ -2,9 +2,12 @@ package dtlazycoches.data;
 
 import java.util.List;
 import java.util.Map;
+
 import javax.faces.bean.ManagedProperty;
+
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+
 import dtlazycoches.domain.Coche;
 import dtlazycoches.services.CocheService;
 
@@ -40,6 +43,7 @@ public class LazyCocheDataModel extends LazyDataModel<Coche> {
     @Override
     public List<Coche> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, Object> filters) {
+
         datasource = cocheservice.paginar(first, pageSize);
         return datasource;
     }

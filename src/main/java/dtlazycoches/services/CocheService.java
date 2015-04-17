@@ -1,5 +1,6 @@
 package dtlazycoches.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -16,7 +17,7 @@ import dtlazycoches.mappers.CocheMapper;
 @ViewScoped
 public class CocheService {
 
-    public List<Coche> findAllCoches() {
+    public List<Coche> findAllCoches() throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
@@ -26,7 +27,7 @@ public class CocheService {
         }
     }
 
-    public Student findCocheById(Integer cocheid) {
+    public Student findCocheById(Integer cocheid) throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
@@ -36,7 +37,7 @@ public class CocheService {
         }
     }
 
-    public void insertCoche(Coche coche) {
+    public void insertCoche(Coche coche) throws IOException {
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
@@ -47,7 +48,7 @@ public class CocheService {
         }
     }
 
-    public List<Coche> paginar(int first, int pageSize) {
+    public List<Coche> paginar(int first, int pageSize) throws IOException {
 
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
