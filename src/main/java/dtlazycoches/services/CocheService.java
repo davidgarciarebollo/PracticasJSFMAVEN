@@ -16,46 +16,46 @@ import dtlazycoches.mappers.CocheMapper;
 @ViewScoped
 public class CocheService {
 
-	public List<Coche> findAllCoches() {
-		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
-		try {
-			CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
-			return cocheMapper.findAllCoches();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    public List<Coche> findAllCoches() {
+        SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+        try {
+            CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
+            return cocheMapper.findAllCoches();
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-	public Student findCocheById(Integer cocheid) {
-		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
-		try {
-			CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
-			return cocheMapper.findCocheById(cocheid);
-		} finally {
-			sqlSession.close();
-		}
-	}
+    public Student findCocheById(Integer cocheid) {
+        SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+        try {
+            CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
+            return cocheMapper.findCocheById(cocheid);
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-	public void insertCoche(Coche coche) {
-		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
-		try {
-			CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
-			cocheMapper.insertCoche(coche);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    public void insertCoche(Coche coche) {
+        SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+        try {
+            CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
+            cocheMapper.insertCoche(coche);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-	public List<Coche> paginar(int first, int pageSize) {
+    public List<Coche> paginar(int first, int pageSize) {
 
-		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
-		try {
-			CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
-			return cocheMapper.paginar(first, pageSize);
-		} finally {
-			sqlSession.close();
-		}
+        SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+        try {
+            CocheMapper cocheMapper = sqlSession.getMapper(CocheMapper.class);
+            return cocheMapper.paginar(first, pageSize);
+        } finally {
+            sqlSession.close();
+        }
 
-	}
+    }
 }

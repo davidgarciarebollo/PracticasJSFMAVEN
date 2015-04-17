@@ -15,39 +15,39 @@ import datatableconmybatis.service.StudentService;
 @ViewScoped
 public class DataTableStudentsView implements Serializable {
 
-	private static final long serialVersionUID = 5788089416300745533L;
-	private Student student;
+    private static final long serialVersionUID = 5788089416300745533L;
+    private Student student;
 
-	private List<Student> students;
+    private List<Student> students;
 
-	@ManagedProperty("#{studentService}")
-	private StudentService studentService;
+    @ManagedProperty("#{studentService}")
+    private StudentService studentService;
 
-	@PostConstruct
-	public void init() {
-		student = new Student();
-		students = studentService.findAllStudents();
-	}
+    @PostConstruct
+    public void init() {
+        student = new Student();
+        students = studentService.findAllStudents();
+    }
 
-	public List<Student> getStudents() {
-		return students;
-	}
+    public List<Student> getStudents() {
+        return students;
+    }
 
-	public void setStudentService(StudentService studentService) {
-		this.studentService = studentService;
-	}
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
-	public Student getStudent() {
-		return student;
-	}
+    public Student getStudent() {
+        return student;
+    }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
-	public String createStudent() {
-		studentService.createStudent(student);
-		return "dataTableStudents";
-	}
+    public String createStudent() {
+        studentService.createStudent(student);
+        return "dataTableStudents";
+    }
 
 }

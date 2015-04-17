@@ -5,18 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-
-import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.model.SortMeta;
 import org.primefaces.model.SortOrder;
-
-import dtlazycoches.data.LazyCocheDataModel;
 import dtlazycoches.domain.Coche;
 import dtlazycoches.services.CocheService;
 
@@ -24,83 +17,84 @@ import dtlazycoches.services.CocheService;
 @ManagedBean
 @ViewScoped
 public class DtLazyCochesView implements Serializable {
-	private List<Coche> coches;
+    private List<Coche> coches;
 
-	private LazyDataModel<Coche> cocheLazyModel;
+    private LazyDataModel<Coche> cocheLazyModel;
 
-	private Coche selectedCoche;
+    private Coche selectedCoche;
 
-	@ManagedProperty("#{cocheService}")
-	private CocheService cocheService;
+    @ManagedProperty("#{cocheService}")
+    private CocheService cocheService;
 
-	private Coche coche;
+    private Coche coche;
 
-	@PostConstruct
-	public void init() {
+    public static final int NUMBER = 3;
 
-		coche = new Coche();
+    @PostConstruct
+    public void init() {
 
-		setCocheLazyModel(new LazyDataModel<Coche>() {
-			private List<Coche> coches;
+        coche = new Coche();
 
-			@Override
-			public List<Coche> load(int first, int pageSize, String sortField,
-					SortOrder sortOrder, Map<String, Object> filters) {
-				int tamano = 3;
+        setCocheLazyModel(new LazyDataModel<Coche>() {
+            private List<Coche> coches;
 
-				coches = cocheService.paginar(first, pageSize);
-				this.setRowCount(tamano);
-				return coches;
+            @Override
+            public List<Coche> load(int first, int pageSize, String sortField,
+                    SortOrder sortOrder, Map<String, Object> filters) {
+                int tamano = NUMBER;
 
-			}
+                coches = cocheService.paginar(first, pageSize);
+                this.setRowCount(tamano);
+                return coches;
 
-		});
-	}
+            }
 
-	public Coche getCoche() {
-		return coche;
-	}
+        });
+    }
 
-	public void setCoche(Coche coche) {
-		this.coche = coche;
-	}
+    public Coche getCoche() {
+        return coche;
+    }
 
-	public Coche getSelectedCoche() {
-		return selectedCoche;
-	}
+    public void setCoche(Coche coche) {
+        this.coche = coche;
+    }
 
-	public void setCocheService(CocheService cocheService) {
-		this.cocheService = cocheService;
-	}
+    public Coche getSelectedCoche() {
+        return selectedCoche;
+    }
 
-	public void setSelectedCoche(Coche selectedCoche) {
-		this.selectedCoche = selectedCoche;
-	}
+    public void setCocheService(CocheService cocheService) {
+        this.cocheService = cocheService;
+    }
 
-	public LazyDataModel<Coche> getCocheLazyModel() {
-		return cocheLazyModel;
-	}
+    public void setSelectedCoche(Coche selectedCoche) {
+        this.selectedCoche = selectedCoche;
+    }
 
-	public CocheService getCocheService() {
-		return cocheService;
-	}
+    public LazyDataModel<Coche> getCocheLazyModel() {
+        return cocheLazyModel;
+    }
 
-	public void setCocheLazyModel(LazyDataModel<Coche> cocheLazyModel) {
-		this.cocheLazyModel = cocheLazyModel;
-	}
+    public CocheService getCocheService() {
+        return cocheService;
+    }
 
-	public List<Coche> getCoches() {
-		return coches;
-	}
+    public void setCocheLazyModel(LazyDataModel<Coche> cocheLazyModel) {
+        this.cocheLazyModel = cocheLazyModel;
+    }
 
-	public void setCoches(List<Coche> coches) {
-		this.coches = coches;
-	}
+    public List<Coche> getCoches() {
+        return coches;
+    }
 
+    public void setCoches(List<Coche> coches) {
+        this.coches = coches;
+    }
 
-	public String insertCoche() {
+    public String insertCoche() {
 
-		return "dtLazyCoches";
-	}
+        return "dtLazyCoches";
+    }
 
 }
