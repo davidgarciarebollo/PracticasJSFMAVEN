@@ -1,4 +1,3 @@
 # Prácticas JSFMAVEN
-prueba con eclipse
-otra prueba con sourcetree
+Limpieza de código con sonar
 -------------------
