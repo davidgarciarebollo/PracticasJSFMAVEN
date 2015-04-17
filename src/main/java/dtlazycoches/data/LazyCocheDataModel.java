@@ -44,7 +44,7 @@ public class LazyCocheDataModel extends LazyDataModel<Coche> {
     public List<Coche> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, Object> filters) {
 
-        //datasource = cocheservice.paginar(first, pageSize);
+        datasource = cocheservice.paginar(first, pageSize);
         return datasource;
     }
 }

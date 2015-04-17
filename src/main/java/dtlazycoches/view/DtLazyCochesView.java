@@ -43,7 +43,7 @@ public class DtLazyCochesView implements Serializable {
                     SortOrder sortOrder, Map<String, Object> filters) {
                 int tamano = NUMBER;
 
-                //coches = cocheService.paginar(first, pageSize);
+                coches = cocheService.paginar(first, pageSize);
                 this.setRowCount(tamano);
                 return coches;
 
