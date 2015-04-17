@@ -1,5 +1,6 @@
 package dtlazycoches.data;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.primefaces.model.SortOrder;
 
 import dtlazycoches.domain.Coche;
 import dtlazycoches.services.CocheService;
+import dtlazycoches.view.LOGGER;
 
 public class LazyCocheDataModel extends LazyDataModel<Coche> {
     @ManagedProperty("#{cocheService}")
@@ -44,7 +46,11 @@ public class LazyCocheDataModel extends LazyDataModel<Coche> {
     public List<Coche> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, Object> filters) {
 
-        datasource = cocheservice.paginar(first, pageSize);
+        try {
+            datasource = cocheservice.paginar(first, pageSize);
+        } catch (IOException e) {
+            LOGGER.log("context", e);
+        }
         return datasource;
     }
 }

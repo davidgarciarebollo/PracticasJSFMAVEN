@@ -1,5 +1,6 @@
 package dtlazycoches.view;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+
 import dtlazycoches.domain.Coche;
 import dtlazycoches.services.CocheService;
 
@@ -43,7 +46,11 @@ public class DtLazyCochesView implements Serializable {
                     SortOrder sortOrder, Map<String, Object> filters) {
                 int tamano = NUMBER;
 
-                coches = cocheService.paginar(first, pageSize);
+                try {
+                    coches = cocheService.paginar(first, pageSize);
+                } catch (IOException e) {
+                    LOGGER.log("context", e);
+                }
                 this.setRowCount(tamano);
                 return coches;
 
