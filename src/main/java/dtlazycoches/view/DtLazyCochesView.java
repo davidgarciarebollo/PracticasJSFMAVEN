@@ -49,7 +49,7 @@ public class DtLazyCochesView implements Serializable {
                 try {
                     coches = cocheService.paginar(first, pageSize);
                 } catch (IOException e) {
-                    LOGGER.log("context", e);
+                    LOGGER.log();
                 }
                 this.setRowCount(tamano);
                 return coches;

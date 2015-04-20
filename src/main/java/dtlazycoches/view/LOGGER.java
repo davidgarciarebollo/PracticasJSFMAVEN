@@ -1,10 +1,9 @@
 package dtlazycoches.view;
 
-import java.io.IOException;
 
 public class LOGGER {
     private static int a;
-    public static void log(String string, IOException e) {
+    public static void log() {
     a=1;
         
     }

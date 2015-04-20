@@ -49,7 +49,7 @@ public class LazyCocheDataModel extends LazyDataModel<Coche> {
         try {
             datasource = cocheservice.paginar(first, pageSize);
         } catch (IOException e) {
-            LOGGER.log("context", e);
+            LOGGER.log();
         }
         return datasource;
     }
