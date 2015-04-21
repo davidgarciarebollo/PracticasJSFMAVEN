@@ -1,23 +1,18 @@
-package java.dtlazycoches.data;
+package dtlazycoches.data;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
-import org.primefaces.model.SortOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import dtlazycoches.domain.Coche;
 import dtlazycoches.data.LazyCocheDataModel;
 import org.junit.runner.RunWith;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LazyCocheDataModelTest {
@@ -25,6 +20,7 @@ public class LazyCocheDataModelTest {
 
     private List<Coche> coches;
     private Date hoy;
+    public static final int NUM=10;
     @InjectMocks
     private LazyCocheDataModel prueba;
     @Mock
@@ -34,7 +30,7 @@ public class LazyCocheDataModelTest {
     public void crear() {
 
         coche1 = new Coche();
-        coche1.setCocheid(10);
+        coche1.setCocheid(NUM);
         coche1.setModelo("modelo1");
         coche1.setFfab(hoy);
         coche1.setMarca("marca1");

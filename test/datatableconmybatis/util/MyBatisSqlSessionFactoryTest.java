@@ -1,4 +1,4 @@
-package java.datatableconmybatis.util;
+package datatableconmybatis.util;
 
 import static org.junit.Assert.assertTrue;
 

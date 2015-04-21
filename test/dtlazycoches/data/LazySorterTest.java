@@ -1,4 +1,4 @@
-package java.dtlazycoches.data;
+package dtlazycoches.data;
 
 import static org.junit.Assert.*;
 import java.util.Date;
@@ -11,9 +11,6 @@ import dtlazycoches.domain.Coche;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,6 +19,8 @@ public class LazySorterTest {
     private String sortField;
     private SortOrder sortOrder;
     private Date hoy;
+    public static final int NUME=10;
+    public static final int NUMER=20;
     @InjectMocks
     private LazySorter sorter;
     @Mock
@@ -36,15 +35,15 @@ public class LazySorterTest {
         sorter = new LazySorter(sortField, sortOrder);
         coche1 = new Coche();
         coche2 = new Coche();
-        coche1.setCocheid(10);
+        coche1.setCocheid(NUME);
         coche1.setModelo("modelo1");
         coche1.setFfab(hoy);
         coche1.setMarca("marca1");
-        coche2.setCocheid(20);
+        coche2.setCocheid(NUMER);
         coche2.setModelo("modelo2");
         coche2.setFfab(hoy);
         coche2.setMarca("marca2");
-        when(sorter.compare(coche1, coche2)).thenReturn(0);
+        when(sorter.compare(coche1, coche2)).thenReturn(NUME);
         when(sorter.getSortField()).thenReturn(prueba.getSortField());
         when(sorter.getSortOrder()).thenReturn(prueba.getSortOrder());
 
@@ -59,7 +58,7 @@ public class LazySorterTest {
 
     @Test
     public void testCompare() {
-        assertTrue(sorter.compare(coche1, coche2) == 0);
+        assertTrue(sorter.compare(coche1, coche2) == NUME);
     }
 
 }
