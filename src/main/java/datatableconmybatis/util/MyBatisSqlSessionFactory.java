@@ -9,7 +9,7 @@ import org.apache.ibatis.session.*;
 public class MyBatisSqlSessionFactory {
     private static SqlSessionFactory sqlSessionFactory;
 
-    public MyBatisSqlSessionFactory() {
+    private MyBatisSqlSessionFactory() {
         super();
 
     }
