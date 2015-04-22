@@ -1,4 +1,4 @@
-package main.java.dtlazycoches.data;
+ package main.java.dtlazycoches.data;
 
 import static org.junit.Assert.*;
 
