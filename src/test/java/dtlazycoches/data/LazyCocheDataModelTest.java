@@ -1,4 +1,4 @@
-package main.java.dtlazycoches.data;
+package dtlazycoches.data;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
