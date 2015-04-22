@@ -1,4 +1,4 @@
-package dtlazycoches.domain;
+package main.java.dtlazycoches.domain;
 
 import static org.junit.Assert.*;
 import java.util.Date;
