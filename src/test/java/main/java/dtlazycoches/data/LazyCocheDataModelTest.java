@@ -36,13 +36,13 @@ public class LazyCocheDataModelTest {
 
     @Test
     public void testgetRowData() {
-        assertTrue(prueba.getRowData("10") == coche1);
+        assertEquals(prueba.getRowData("10") , coche1);
 
     }
 
     @Test
     public void testgetRowKey() {
-        assertTrue(prueba.getRowKey(coche1) == "10");
+        assertEquals(prueba.getRowKey(coche1) , "10");
     }
 
 }

@@ -1,9 +1,12 @@
 package main.java.dtlazycoches.domain;
 
 import static org.junit.Assert.*;
+
 import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import dtlazycoches.domain.Coche;
 
 public class CocheTest {
@@ -15,7 +18,7 @@ public class CocheTest {
     @Before
     public void crear() {
         coche1 = new Coche();
-        coche1.setCocheid(10);
+        coche1.setCocheid(NUM);
         coche1.setModelo("modelo1");
         coche1.setFfab(hoy);
         coche1.setMarca("marca1");
@@ -26,9 +29,10 @@ public class CocheTest {
     public void testCoche() {
 
         assertTrue(coche1.getCocheid() == NUM);
-        assertTrue(coche1.getModelo() == "modelo1");
-        assertTrue(coche1.getFfab() == hoy);
-        assertTrue(coche1.getMarca() == "marca1");
+        assertEquals(coche1.getModelo() , "modelo1");
+        assertEquals(coche1.getFfab() , hoy);
+        assertEquals(coche1.getMarca() , "marca1");
+        
     }
 
 }

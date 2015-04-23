@@ -37,19 +37,20 @@ public class LazySorterTest {
         coche2 = new Coche();
         sorter = mock(LazySorter.class);
         when(sorter.getSortOrder()).thenReturn(sortOrder);
-        when(sorter.getSortField()).thenReturn(sortField);
+        when(sorter.getSortField()).thenReturn("test");
         when(sorter.compare(coche1, coche2)).thenReturn(NUME);
     }
 
     @Test
     public void testLazySorter() {
-        assertTrue(sorter.getSortField() == sortField);
-        assertTrue(sorter.getSortOrder() == sortOrder);
+        assertEquals(sorter.getSortField() , "test");
+        assertEquals(sorter.getSortOrder() ,sortOrder);
     }
 
     @Test
     public void testCompare() {
-        assertTrue(sorter.compare(coche1, coche2) == NUME);
+        assertEquals(sorter.compare(coche1, coche2) , NUME);
     }
+
 
 }
