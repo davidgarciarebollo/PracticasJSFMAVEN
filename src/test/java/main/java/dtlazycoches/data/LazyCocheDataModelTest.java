@@ -1,48 +1,54 @@
 package main.java.dtlazycoches.data;
 
 import static org.junit.Assert.*;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.mock;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.primefaces.model.SortOrder;
+
 import dtlazycoches.domain.Coche;
 import dtlazycoches.data.LazyCocheDataModel;
-import org.junit.runner.RunWith;
 
-@RunWith(MockitoJUnitRunner.class)
 public class LazyCocheDataModelTest {
 
-
-  
     private Date hoy;
     public static final int NUM=10;
-    @Mock
     private Coche coche1;
     private LazyCocheDataModel prueba;
+    private LazyCocheDataModel pruebab;
+    private List<Coche> myList;
+    public static final int NUMB=1;
+    public static final int NUMC=1;
 
     @Before
     public void crear() {
 
         coche1 = new Coche();
-        prueba = mock(LazyCocheDataModel.class);
-        when(prueba.getRowData("10")).thenReturn(coche1);
-        when(prueba.getRowKey(coche1)).thenReturn("10");
+        coche1.setCocheid(1);
+        myList = new ArrayList<Coche>();
+        myList = Arrays.asList(coche1);
+        prueba = new LazyCocheDataModel(myList);
+        pruebab = new LazyCocheDataModel();
     }
 
     @Test
     public void testgetRowData() {
-        assertEquals(prueba.getRowData("10") , coche1);
+        assertNull(prueba.getRowData("1"));
 
     }
 
     @Test
     public void testgetRowKey() {
-        assertEquals(prueba.getRowKey(coche1) , "10");
+        assertNotNull(prueba.getRowKey(coche1));
     }
+    
+    
+
 
 }

@@ -1,9 +1,9 @@
 package dtlazycoches.view;
 
 public class LOGGER {
-    private static int a;
+    protected static int a;
 
-    private LOGGER() {
+    protected LOGGER() {
 
         super();
         this.a = a;
